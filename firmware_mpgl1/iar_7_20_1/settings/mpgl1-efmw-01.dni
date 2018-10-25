@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=-839873780
+Checksum=-2056367971
 [JLinkDriver]
 CStepIntDis=_ 0
 WatchCond=_ 0
@@ -75,7 +75,10 @@ Stop=1
 Enabled=0
 ShowSource=1
 [Aliases]
-Count=0
+A0=_ "D:\MPG\mpg_source\Git\Razor_Atmel\firmware_mpg_common\board_cstartup_iar.c" ""
+A1=_ "D:\MPG\mpg_source\Git\Razor_Atmel\firmware_mpg_common\drivers\leds.c" ""
+A2=_ "D:\MPG\mpg_source\Git\Razor_Atmel\firmware_mpgl1\bsp\mpgl1-ehdw-03.c" ""
+Count=3
 SuppressDialog=0
 [Simulator]
 Freq=10000000
