@@ -92,7 +92,8 @@ Promises:
 */
 void UserApp1Initialize(void)
 {
- 
+  HEARTBEAT_OFF();
+  
   /* Show static image */
   //LcdClearPixels(&G_sLcdClearWholeScreen);
   
@@ -150,8 +151,32 @@ State Machine Function Definitions
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 /* Wait for first image display */
+
 static void UserApp1SM_Idle1(void)
 {
+    static u32 u32Counter = 0;
+    static bool bLightIsOn = FALSE;
+
+  /* Increment u32Counter every 1ms cycle */
+  u32Counter++;
+  
+  /* Check and roll over */
+  if(u32Counter == COUNTER_LIMIT_MS)
+  {
+    u32Counter = 0;
+        
+    if(bLightIsOn)
+    {
+      HEARTBEAT_OFF();
+    }
+    else
+    {
+      HEARTBEAT_ON();
+    }
+    bLightIsOn = !bLightIsOn;
+  }
+  
+  
   if(IsTimeUp(&UserApp1_u32Timeout, U32_IMAGE_DELAY_TIME_MS))
   {
     LcdLoadBitmap(&aau8FullScreen2[0][0], &UserApp1_sEngenuicsImage);
